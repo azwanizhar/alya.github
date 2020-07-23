@@ -3,7 +3,7 @@
     <title> alya-makjasa-2018-event </title>
     
      <script>
-      funtion getLocation() {
+      function getLocation() {
         if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(function showAlert(pos) {
             alert("You have been tracked; coordinate: " + pos.coords.latitude + ", " + pos.coords.longitude);
