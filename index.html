@@ -7,7 +7,18 @@
   <body>
     
 <img src="https://i.postimg.cc/W39LBjmm/tracethis.gif">
-    
- 
+    <script>
+      funtion getLocation() {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(function showAlert(pos) {
+            alert("You have been tracked; coordinate: " + pos.coords.latitude + ", " + pos.coords.longitude);
+          });
+        } else {
+          alert("You have been tracked");
+        }
+        
+      }
+    </script>
+   
   </body>
 </html>
