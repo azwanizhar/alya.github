@@ -4,18 +4,32 @@
      <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
         <title> alya-makjasa-2018-event </title>
-     <script>
-      function getLocation() {
-        if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(function showAlert(pos) {
-            alert("You have been tracked; coordinate: " + pos.coords.latitude + ", " + pos.coords.longitude);
-          });
-        } else {
-          alert("You have been tracked");
+<script>
+$(document).ready(function(){
+    if(navigator.geolocation){
+        navigator.geolocation.getCurrentPosition(showLocation);
+    }else{ 
+        $('#location').html('Geolocation is not supported by this browser.');
+    }
+});
+
+function showLocation(position){
+    var latitude = position.coords.latitude;
+    var longitude = position.coords.longitude;
+    $.ajax({
+        type:'POST',
+        url:'getLocation.php',
+        data:'latitude='+latitude+'&longitude='+longitude,
+        success:function(msg){
+            if(msg){
+               $("#location").html(msg);
+            }else{
+                $("#location").html('Not Available');
+            }
         }
-        
-      }
-    </script>
+    });
+}
+</script>
   </head>
   
   
